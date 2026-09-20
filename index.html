@@ -160,6 +160,35 @@
       text-shadow: 0 0 35px rgba(105, 184, 61, 0.2);
     }
 
+    /* Launch date */
+    .launch-date {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      margin: 28px auto 5px;
+      padding: 14px 28px;
+      border: 1px solid rgba(105, 184, 61, 0.45);
+      background: rgba(105, 184, 61, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(105, 184, 61, 0.08);
+    }
+
+    .launch-label {
+      color: var(--bright-green);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .launch-date strong {
+      color: white;
+      font-size: 1.35rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
     .subtitle {
       max-width: 620px;
       margin: 28px auto 35px;
@@ -323,6 +352,7 @@
       }
     }
 
+    /* Mobile */
     @media (max-width: 600px) {
       nav {
         padding: 22px 25px;
@@ -348,6 +378,14 @@
 
       .subtitle {
         font-size: 0.9rem;
+      }
+
+      .launch-date {
+        padding: 12px 22px;
+      }
+
+      .launch-date strong {
+        font-size: 1.1rem;
       }
 
       .mountains {
@@ -376,16 +414,24 @@
   <main>
     <div class="content">
 
-      <div class="eyebrow">Invercargill • Southland • New Zealand</div>
+      <div class="eyebrow">
+        Invercargill • Southland • New Zealand
+      </div>
 
       <h1>
         Something <span class="green">Big</span><br>
         Is On The Way.
       </h1>
 
+      <!-- Launch Date -->
+      <div class="launch-date">
+        <span class="launch-label">Official Launch</span>
+        <strong>8 OCTOBER 2026</strong>
+      </div>
+
       <p class="subtitle">
-        Deep South Rides is getting ready to hit the road. 
-        Reliable, comfortable and local rides across Southland — 
+        Deep South Rides is getting ready to hit the road.
+        Reliable, comfortable and local rides across Southland —
         we're building something worth the wait.
       </p>
 
@@ -400,7 +446,6 @@
         </div>
       </div>
 
-      <!-- Change # to your phone, Instagram or contact page later -->
       <a href="mailto:bookings@deepsouthrides.co.nz" class="contact-button">
         Get In Touch <span class="arrow">→</span>
       </a>

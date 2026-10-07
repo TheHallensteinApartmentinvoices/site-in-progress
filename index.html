@@ -222,7 +222,7 @@
 
                 <option
                   value="Invercargill Town Boundary - $12.50"
-                  data-map="https://www.google.com/maps/d/edit?mid=1OoMt-_o56Mou2EykRLK20W5G-H4klWc&usp=sharinghttps://www.google.com/maps/d/edit?mid=1OoMt-_o56Mou2EykRLK20W5G-H4klWc&usp=sharing"
+                  data-map="https://www.google.com/maps/d/embed?mid=1OoMt-_o56Mou2EykRLK20W5G-H4klWc"
                 >
                   Invercargill Town Boundary — $12.50
                 </option>
@@ -654,10 +654,6 @@
 
   /*
    * DESTINATION MAP
-   *
-   * Invercargill uses a coordinate-based Google Maps embed.
-   * This keeps the map centred on Invercargill and zoomed in
-   * instead of showing the entire Southland/world.
    */
 
   destination.addEventListener('change', () => {
@@ -687,10 +683,7 @@
     /*
      * INVERCARGILL TOWN BOUNDARY
      *
-     * q = exact centre coordinate
-     * z = zoom level
-     *
-     * Higher zoom number = closer view.
+     * Embeds the custom Google My Maps boundary directly.
      */
     if (
       option.value.startsWith(
@@ -698,16 +691,12 @@
       )
     ) {
 
-      tripMap.src =
-        'https://www.google.com/maps' +
-        '?q=-46.4132,168.3538' +
-        '&z=13' +
-        '&output=embed';
+      tripMap.src = place;
 
     } else {
 
       /*
-       * Other destinations still show the route
+       * Other destinations show the route
        * from Invercargill to the selected destination.
        */
 

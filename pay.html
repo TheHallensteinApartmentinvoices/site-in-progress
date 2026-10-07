@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to Payment...</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f5;
+      color: #18181b;
+    }
+
+    .loading-card {
+      text-align: center;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 1rem;
+    }
+
+    .loading-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .loading-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <link rel="stylesheet" href="dark-theme-overrides.css">
+</head>
+
+<body>
+
+  <div class="loading-card">
+    <h2>Processing your booking...</h2>
+    <p>Please wait while we transfer you to our secure payment gateway.</p>
+  </div>
+
+  <script>
+    const payments = {
+      "Invercargill Town Boundary - $12.50": {
+        price: "$12.50",
+        stripe: "https://buy.stripe.com/28E4gA9Bdgvte8A5A58N209"
+      },
+
+      "Otatara - $20": {
+        price: "$20",
+        stripe: "https://buy.stripe.com/14A28sdRtcfd5C49Ql8N201"
+      },
+
+      "Airport Drop Offs - $25": {
+        price: "$25",
+        stripe: "https://buy.stripe.com/00w14o8x97YX3tW1jP8N20b"
+      },
+
+      "Bluff - $50": {
+        price: "$50",
+        stripe: "https://buy.stripe.com/28E5kEfZB2EDaWo5A58N203"
+      },
+
+      "Riverton - $75": {
+        price: "$75",
+        stripe: "https://buy.stripe.com/3cI9AU8x9cfd0hK6E98N204"
+      },
+
+      "Gore - $100": {
+        price: "$100",
+        stripe: "https://buy.stripe.com/6oU14odRt2EDfcE7Id8N205"
+      },
+
+      "Te Anau - $300": {
+        price: "$300",
+        stripe: "https://buy.stripe.com/3cI5kE5Xdjh1lOgeJ8N206"
+      },
+
+      "Queenstown - $350": {
+        price: "$350",
+        stripe: "https://buy.stripe.com/00w6oIfZBenl7KcaUp8N207"
+      },
+
+      "Wanaka - $450": {
+        price: "$450",
+        stripe: "https://buy.stripe.com/8x2eVe9Bd0wvfcE8Mh8N208"
+      },
+
+      "Dunedin - $375": {
+        price: "$375",
+        stripe: "https://buy.stripe.com/aFa14o4gT2ED0hKbYt8N20a"
+      }
+    };
+
+    // Get the destination selected on the booking form
+    const selectedRide = sessionStorage.getItem("rideDestination");
+
+    // Find the matching Stripe payment link
+    const paymentInfo = payments[selectedRide];
+
+    // Clear the stored destination after retrieving it
+    sessionStorage.removeItem("rideDestination");
+
+    if (paymentInfo && paymentInfo.stripe) {
+
+      // Redirect directly to Stripe
+      window.location.href = paymentInfo.stripe;
+
+    } else {
+
+      // Fallback for "Other destination" or an unlisted destination
+      document.querySelector(".loading-card").innerHTML = `
+        <h2>Booking Received!</h2>
+        <p>
+          Thank you! We will review your custom trip request and
+          contact you shortly with a quote and payment link.
+        </p>
+        <a href="index.html">Return to Home</a>
+      `;
+    }
+  </script>
+
+</body>
+</html>

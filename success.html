@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking received | Deep South Rides</title>
+<link rel="icon" href="images/favicon.png"><link rel="stylesheet" href="index.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="site-header"><a href="index.html#top" class="brand"><img src="images/UberTaxiInvercargillRides.png" alt="Deep South Rides"></a><a class="header-book" href="index.html#book">Book a ride</a></header>
+<main class="simple-page">
+<p class="eyebrow">BOOKING RECEIVED</p>
+<h1>Thanks, <span id="custName">Customer</span>.</h1>
+<p>We've received your ride request and will review the details. We'll contact you to confirm availability and the final booking.</p>
+<div class="booking-card" style="margin:30px 0">
+  <div class="form-top"><span>REQUEST SUMMARY</span><small>Deep South Rides</small></div>
+  <div class="summary-grid">
+    <div><small>Destination</small><strong id="summaryDest">—</strong></div>
+    <div><small>Pickup date</small><strong id="summaryDate">—</strong></div>
+    <div><small>Pickup time</small><strong id="summaryTime">—</strong></div>
+    <div><small>Payment</small><strong id="summaryPayment">—</strong></div>
+  </div>
+</div>
+<p>If you need to make changes, text <strong>028 853 32885</strong> or email <strong>bookings@deepsouthrides.co.nz</strong>.</p>
+<a class="primary-btn" href="index.html">← Back to home</a>
+</main>
+<footer><div class="footer-inner"><img src="images/UberTaxiInvercargillRides.png" alt="Deep South Rides"><div><strong>Deep South Rides</strong><p>Locally owned transport from Invercargill across Southland and beyond.</p></div><div class="footer-contact"><a href="sms:02885332885">Text 028 853 32885</a><a href="mailto:bookings@deepsouthrides.co.nz">bookings@deepsouthrides.co.nz</a></div></div></footer>
+<style>.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.summary-grid div{padding:15px;background:#0a110d;border:1px solid var(--line);border-radius:10px}.summary-grid small{display:block;color:var(--muted);margin-bottom:6px}.summary-grid strong{display:block;line-height:1.4}@media(max-width:600px){.summary-grid{grid-template-columns:1fr}}</style>
+<script>
+const get=k=>sessionStorage.getItem(k)||'—';
+document.getElementById('custName').textContent=get('rideName');
+document.getElementById('summaryDest').textContent=get('rideDestination');
+document.getElementById('summaryDate').textContent=get('rideDate');
+document.getElementById('summaryTime').textContent=get('rideTime');
+document.getElementById('summaryPayment').textContent=get('paymentMethod');
+</script>
+</body></html>

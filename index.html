@@ -188,19 +188,34 @@
     bankDetails.hidden = paymentMethodSelect.value !== 'Bank Transfer';
   });
 
-  // Restore the destination map preview without requiring a Google Maps API key.
-  destination.addEventListener('change', () => {
-    const option = destination.options[destination.selectedIndex];
-    const place = option.dataset.map;
-    if (!place) { mapWrap.hidden = true; tripMap.src = ''; return; }
-    mapTitle.textContent = option.textContent.replace(/\s*—.*/, '');
-    if (option.value.startsWith('Invercargill Town Boundary')) {
-      tripMap.src = 'https://www.google.com/maps?output=embed&q=' + encodeURIComponent('Invercargill, New Zealand');
-    } else {
-      tripMap.src = 'https://www.google.com/maps?output=embed&saddr=' + encodeURIComponent('Invercargill, New Zealand') + '&daddr=' + encodeURIComponent(place);
-    }
-    mapWrap.hidden = false;
-  });
+// Restore the destination map preview without requiring a Google Maps API key.
+destination.addEventListener('change', () => {
+  const option = destination.options[destination.selectedIndex];
+  const place = option.dataset.map;
+
+  if (!place) {
+    mapWrap.hidden = true;
+    tripMap.src = '';
+    return;
+  }
+
+  mapTitle.textContent = option.textContent.replace(/\s*—.*/, '');
+
+  if (option.value.startsWith('Invercargill Town Boundary')) {
+    // Tighter Invercargill urban-area map view
+    tripMap.src =
+      'https://www.google.com/maps?output=embed' +
+      '&center=-46.4132,168.3538' +
+      '&zoom=12';
+  } else {
+    tripMap.src =
+      'https://www.google.com/maps?output=embed' +
+      '&saddr=' + encodeURIComponent('Invercargill, New Zealand') +
+      '&daddr=' + encodeURIComponent(place);
+  }
+
+  mapWrap.hidden = false;
+});
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
